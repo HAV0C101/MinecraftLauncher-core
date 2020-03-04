@@ -29,11 +29,9 @@ class MCLCore extends EventEmitter {
         // Lets the events register. our magic switch!
         await void(0);
 
-<<<<<<< HEAD
         if(fs.existsSync(path.join(__dirname,'..', 'package.json'))) {
             this.emit('debug', `[MCLC]: MCLC version ${JSON.parse(fs.readFileSync(path.join(__dirname,'..', 'package.json'), { encoding: 'utf8' })).version}`);
         } else { this.emit('debug', `[MCLC]: Package JSON not found, skipping MCLC version check.`); }
-=======
         this.emit('debug', `[MCLC]: MCLC version ${JSON.parse(fs.readFileSync(path.join(__dirname,'..', 'package.json'), { encoding: 'utf8' })).version}`);
 
         // Run all register process from modules
@@ -46,7 +44,6 @@ class MCLCore extends EventEmitter {
             module.register(this.options);
         }
 
->>>>>>> 1abc7f3... Implemented plugin loading
         const java = await this.handler.checkJava(this.options.javaPath || 'java');
         if(!java.run) {
             this.emit('debug', `[MCLC]: Couldn't start Minecraft due to: ${java.message}`);
