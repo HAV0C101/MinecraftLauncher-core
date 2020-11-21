@@ -5,15 +5,7 @@ let api_url = 'https://authserver.mojang.com'
 module.exports.getAuth = function (username, password) {
   return new Promise((resolve, reject) => {
     if (!password) {
-      const user = {
-        access_token: uuid(),
-        client_token: uuid(),
-        uuid: uuid(),
-        name: username,
-        user_properties: JSON.stringify({})
-      }
-
-      return resolve(user)
+      return reject(new Error('Password Required'));
     }
 
     const requestObject = {
